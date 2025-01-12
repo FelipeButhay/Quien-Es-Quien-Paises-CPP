@@ -141,8 +141,10 @@ class Game {
 		int sideBar = sx - gap*8 - card*7;
 		DrawRectangle(gap*8 + card*7, 0, sideBar, sy, DARKGRAY);
 
-		Vector2 myFlagPos = { gap*8 + card*7 + sideBar*0.2f, sideBar*0.2f };
-		DrawTextureEx(countries[playerCard].flag, myFlagPos, 0, (sideBar*0.6f)/640.0f, WHITE);
+		Rectangle myFlagDest = { gap*8 + card*7 + sideBar*0.2f, sideBar*0.2f, sideBar*0.6f, sideBar*0.6f*0.75f };
+		Rectangle myFlagSource = { 0, 0, 640, 479 };
+		Vector2 origin = { 0, 0 };
+		DrawTexturePro(countries[playerCard].flag, myFlagSource, myFlagDest, origin, 0.0f, WHITE);
 
 		char* countryNameChar = strToChar(countries[playerCard].name);
 		int bigFontSize = FontSizeHandler(countryNameChar, sideBar*0.3f, sideBar*0.6f);
